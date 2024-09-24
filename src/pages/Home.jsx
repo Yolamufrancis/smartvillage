@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch("/backend/listing/get?offer=true&limit=4");
+        const res = await fetch("https://api.smartvillageshub.com/api/listing/get?offer=true&limit=4");
         const data = await res.json();
         setOfferListings(data);
         fetchRentListings();
@@ -27,7 +27,7 @@ export default function Home() {
 
     const fetchRentListings = async () => {
       try {
-        const res = await fetch("/backend/listing/get?type=rent&limit=4");
+        const res = await fetch("https://api.smartvillageshub.com/api/listing/get?type=rent&limit=4");
         const data = await res.json();
         setRentListings(data);
         fetchSaleListings();
@@ -38,7 +38,7 @@ export default function Home() {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch("/backend/listing/get?type=sale&limit=4");
+        const res = await fetch("https://api.smartvillageshub.com/api/listing/get?type=sale&limit=4");
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {
@@ -82,7 +82,7 @@ export default function Home() {
             <SwiperSlide key={listing._id}>
               <div
                 style={{
-                  background: `url(/backend/listing/${listing.imageUrls[0]}) center no-repeat`,
+                  background: `url(https://api.smartvillageshub.com/api/listing/${listing.imageUrls[0]}) center no-repeat`,
                   backgroundSize: "cover",
                 }}
                 className="h-[500px]"
