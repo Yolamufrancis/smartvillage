@@ -5,9 +5,11 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   server: {
     proxy: {
-      'https://smartvillageshub.com/backend': {
+      '/backend': {
         target: 'https://api.smartvillageshub.com/api/',
         secure: false,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/backend/, '')
       }
     }
   },
